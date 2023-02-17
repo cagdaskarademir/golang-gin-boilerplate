@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"github.com/cagdaskarademir/golang-gin-boilerplate/src"
 	"github.com/cagdaskarademir/golang-gin-boilerplate/src/db"
 	"github.com/joho/godotenv"
 	"log"
@@ -14,8 +14,6 @@ func main() {
 		log.Fatal("Error loading .env file. Please check it!")
 	}
 
-	fmt.Println(os.Getenv("ProjectName"))
-
 	// Setup Connection
 	connection := db.Init()
 
@@ -24,5 +22,15 @@ func main() {
 			log.Print(err.Error())
 		}
 	}()
+
+	// Todo:  Swagger Integration
+
+	app := src.InitServer(connection)
+
+	// Route
+
+	if err := app.Run(os.Getenv("PORT")); err != nil {
+		log.Fatal(err.Error())
+	}
 
 }
