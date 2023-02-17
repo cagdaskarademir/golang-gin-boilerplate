@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func InitDb() *gorm.DB {
+func Init() *gorm.DB {
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),
