@@ -1,8 +1,9 @@
-package src
+package configuration
 
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"os"
 )
 
 type Server struct {
@@ -12,6 +13,13 @@ type Server struct {
 
 // InitServer initialized the default configurations
 func InitServer(connection *gorm.DB) *Server {
+	environment := os.Getenv("ENVIRONMENT")
+	if len(environment) == 0 {
+		environment = "debug"
+	}
+
+	gin.SetMode(environment)
+
 	return &Server{
 		engine:   gin.Default(),
 		database: connection,

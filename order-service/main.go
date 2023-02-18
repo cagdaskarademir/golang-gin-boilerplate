@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/cagdaskarademir/golang-gin-boilerplate/src"
-	"github.com/cagdaskarademir/golang-gin-boilerplate/src/db"
+	"github.com/cagdaskarademir/golang/order-service/configuration"
+	"github.com/cagdaskarademir/golang/order-service/db"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
@@ -25,11 +25,12 @@ func main() {
 
 	// Todo:  Swagger Integration
 
-	app := src.InitServer(connection)
+	server := configuration.InitServer(connection)
 
 	// Route
+	configuration.Routes(server)
 
-	if err := app.Run(os.Getenv("PORT")); err != nil {
+	if err := server.Run(os.Getenv("PORT")); err != nil {
 		log.Fatal(err.Error())
 	}
 

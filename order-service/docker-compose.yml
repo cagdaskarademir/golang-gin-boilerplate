@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  order_db:
+    image: mysql:8.0.32
+    container_name: order_service_db
+    environment:
+      MYSQL_DATABASE: 'order'
+      MYSQL_USER: 'service_user'
+      MYSQL_PASSWORD: 'Aa123456'
+      MYSQL_ROOT_PASSWORD: 'RPAa123456'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+
+volumes:
+  my-db:
