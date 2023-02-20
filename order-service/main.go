@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"github.com/cagdaskarademir/golang/order-service/configuration"
 	"github.com/cagdaskarademir/golang/order-service/db"
+	"github.com/cagdaskarademir/golang/order-service/docs"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
@@ -23,7 +25,7 @@ func main() {
 		}
 	}()
 
-	// Todo:  Swagger Integration
+	docs.SwaggerInfo.Host = fmt.Sprintf("%s:%s", os.Getenv("HOST"), os.Getenv("EXPOSE_PORT"))
 
 	server := configuration.InitServer(connection)
 

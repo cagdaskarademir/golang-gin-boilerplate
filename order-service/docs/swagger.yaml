@@ -1,0 +1,19 @@
+info:
+  contact: {}
+paths:
+  /orders:
+    get:
+      consumes:
+      - application/json
+      description: details summary
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Order Transactions With No Filter
+      tags:
+      - Order Operations
+swagger: "2.0"
